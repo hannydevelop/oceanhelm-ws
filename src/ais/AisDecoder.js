@@ -1,4 +1,4 @@
-const AisDecoderStream = require("ais-stream-decoder");
+const AisDecoderStream = require("ais-stream-decoder").default;
 
 class AisDecoder {
   constructor(receiverId) {
