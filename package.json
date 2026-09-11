@@ -1,18 +1,18 @@
 {
   "name": "oceanhelm-ws",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "commonjs",
+  "description": "OceanHelm AIS gateway, decoder and WebSocket stream server",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "ais-stream-decoder": "^2.1.2",
-    "dgram": "^1.0.1",
-    "http": "^0.0.1-security",
-    "ws": "^8.21.3"
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
   }
 }
