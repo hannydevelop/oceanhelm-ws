@@ -10,6 +10,16 @@ class AisGateway {
   }
 
   startReceiver(config) {
+    // Only receivers explicitly marked mode: "tcp" get an outbound
+    // connection attempt. Agent-push receivers (mode: "agent") are
+    // deliberately skipped here — they're wired up lazily in
+    // server.js's onAgentMessage handler instead, keyed by
+    // receiver_id, with no TCP dial involved.
+    if (config?.mode !== "tcp") {
+      console.log(`[AIS] ${config?.id || "unknown"} is agent-push; skipping TCP connect`);
+      return null;
+    }
+
     if (!config?.enabled || !config.host || !config.port) {
       console.log(`[AIS] ${config?.id || "unknown"} not configured; skipping`);
       return null;
